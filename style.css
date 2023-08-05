@@ -16,8 +16,9 @@ nav{
 nav ul{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     list-style-type: none;
-    height: 65px;
+    padding: 1rem;
     background-color: black;
     color: white;
 }
@@ -67,6 +68,7 @@ nav ul li{
 
 .container{
     min-height: 72vh;
+    position: relative;
     background-color: black;
     color: white;
    font-family: 'Varela Round', sans-serif;
@@ -95,9 +97,19 @@ nav ul li{
 .search_input{
     border-radius: 5px;
     border: none;
-    background: transparent;
+    padding: 1rem;
+    border-radius: 25px;
+    margin: 0 5px 0 0;
+    background-color: rgba(111, 107, 99, 0.556);
     outline: none;
     color: white;
+}
+.fa-search{
+    background-color: rgba(255, 255, 255, 0.399);
+    padding: 1rem;
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    color: black;
 }
 input::placeholder {
     font-weight: 600;
@@ -131,6 +143,13 @@ input::placeholder {
     justify-content: space-between;
     align-items: center;
     border-radius: 34px;
+}
+
+#noSong{
+    position: absolute;
+    top: 20%;
+    /* left: 50%;
+    transform: translateX(-50%); */
 }
 
 .songItem img{
@@ -174,11 +193,18 @@ input::placeholder {
     width: 100px;
     margin: 0 8px;
   }
+
   
 
 @media only screen and (max-width: 1160px) {
     body {
         background-color: antiquewhite;
+    }
+    nav ul{
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        padding: 1rem;
+        gap: 10px;
     }
     .bottom{
         position: relative;
@@ -191,6 +217,10 @@ input::placeholder {
     .icons{
         position: absolute;
         top: 10px;
+    }
+    #searchInput{
+        padding: 1rem;
+        border-radius: 10px;
     }
     .volumeControl{
         position: absolute;

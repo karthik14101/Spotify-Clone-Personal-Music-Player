@@ -8,6 +8,10 @@ let myProgressBar = document.getElementById('myProgressBar');
 let gif = document.getElementById('gif');
 let masterSongName = document.getElementById('masterSongName');
 let songItems = Array.from(document.getElementsByClassName('songItem'));
+let songList = document.querySelector(".songList")
+let songsCount = 0;
+
+console.log(songList)
 
 let songs = [
   { songName: "Ravanasura Anthem", filePath: "songs/1.mp3", coverPath: "covers/1.jpg" },
@@ -31,6 +35,20 @@ songItems.forEach((element, i) => {
 // Search songs
 document.getElementById('searchInput').addEventListener('input', (e) => {
   const searchTerm = e.target.value.toLowerCase();
+  songsCount = 0;
+  songs.forEach((ele)=>{
+    if(ele.songName.includes(searchTerm)){
+      songsCount+=1
+    };
+  })
+  console.log(songsCount)
+  if(songsCount == 0) {
+
+    document.querySelector("#noSong").style.display = "flex"
+    document.querySelector("#noSong").innerHTML = `No song is found with &nbsp;<span style="color:#090804">${searchTerm}</span>`
+  }else{
+    document.querySelector("#noSong").style.display = "none"
+  }
   songItems.forEach((item) => {
     const songName = item.getElementsByClassName('songName')[0].innerText.toLowerCase();
     if (songName.includes(searchTerm)) {
