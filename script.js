@@ -9,7 +9,7 @@ let gif = document.getElementById('gif');
 let masterSongName = document.getElementById('masterSongName');
 let songItems = Array.from(document.getElementsByClassName('songItem'));
 let songList = document.querySelector(".songList")
-let songsCount = 0;
+let songsCount = false;
 
 console.log(songList)
 
@@ -34,21 +34,23 @@ songItems.forEach((element, i) => {
 // Search songs
 // Search songs
 document.getElementById('searchInput').addEventListener('input', (e) => {
+  songsCount = false;
   const searchTerm = e.target.value.toLowerCase();
-  songsCount = 0;
+  console.log(searchTerm)
   songs.forEach((ele)=>{
-    if(ele.songName.includes(searchTerm)){
-      songsCount+=1
+    if(ele.songName.toLowerCase().includes(searchTerm)){
+      songsCount = true
+      return
     };
   })
   console.log(songsCount)
-  if(songsCount == 0) {
-
+  if(!songsCount) {
     document.querySelector("#noSong").style.display = "flex"
     document.querySelector("#noSong").innerHTML = `No song is found with &nbsp;<span style="color:#090804">${searchTerm}</span>`
   }else{
     document.querySelector("#noSong").style.display = "none"
   }
+  console.log(songsCount)
   songItems.forEach((item) => {
     const songName = item.getElementsByClassName('songName')[0].innerText.toLowerCase();
     if (songName.includes(searchTerm)) {
